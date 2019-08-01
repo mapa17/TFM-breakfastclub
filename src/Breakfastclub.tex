@@ -1,13 +1,11 @@
 \documentclass[11pt, a4paper, english]{book}
 \usepackage{estilo_unir}
 \usepackage[subpreambles=true]{standalone}
-%\usepackage{import}
 
 
-
-\title{Breakfastclub}
+\title{Breakfastclub - Agent based model of a virtual classroom}
 \author{Manuel Pasieka}
-\date{1 August 2019}
+\date{\today}
 \director{Michael Kickmeier-Rust, Verdu Perez, Elena}
 \nombreciudad{Valencia}
 
@@ -26,6 +24,8 @@
 \renewcommand{\figurename}{Figura}
 \renewcommand{\tablename}{Tabla} 
 
+\newcommand{\bb}[1][5mm]{\vspace{#1}}
+
 \maketitle
 
 \frontmatter
@@ -33,6 +33,9 @@
 \tableofcontents
 \listoffigures
 \listoftables
+
+% Dissable paragrapth intention
+\setlength{\parindent}{0pt}
 
 \include{text/Abstract}
 
@@ -50,22 +53,13 @@
 
 \include{text/Conclusion}
 
-\chapter{inthe main}
-should not be the only one ..
-
 \bibliographystyle{plain} 
 \bibliography{bibliography}
 
 \appendix
-\chapter{Appendix}
-Atenci�n, deber� generar un pdf con la plantilla de art�culo y a�adirla como anexo utilizando includepdf.
 
+\include{text/Appendix}
 
-
-
-
-
-%\includepdf[pages=-]{anexo.pdf} %descomentar cu�ndo est� el art�culo terminado.
 \end{document}
 
 
