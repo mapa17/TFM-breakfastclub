@@ -1,0 +1,90 @@
+\documentclass[11pt, a4paper, english]{book}
+\usepackage{estilo_unir}
+\usepackage[subpreambles=true]{standalone}
+%\usepackage{import}
+
+
+
+\title{Breakfastclub}
+\author{Manuel Pasieka}
+\date{1 August 2019}
+\director{Michael Kickmeier-Rust, Verdu Perez, Elena}
+\nombreciudad{Valencia}
+
+%---------------------------
+%marges
+%---------------------------
+%\usepackage[margin=1.9cm]{geometry}
+%---------------------------
+%---------------------------
+%---------------------------
+%---------------------------
+\begin{document}
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+\renewcommand{\contentsname}{Additional Content}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla} 
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{text/Abstract}
+
+\mainmatter
+
+\include{text/Introduction}
+
+\include{text/StateOfTheArt}
+
+\include{text/RequirementsObjectives}
+
+\include{text/Development}
+
+\include{text/DataAnalysis}
+
+\include{text/Conclusion}
+
+\chapter{inthe main}
+should not be the only one ..
+
+\bibliographystyle{plain} 
+\bibliography{bibliography}
+
+\appendix
+\chapter{Appendix}
+Atenci�n, deber� generar un pdf con la plantilla de art�culo y a�adirla como anexo utilizando includepdf.
+
+
+
+
+
+
+%\includepdf[pages=-]{anexo.pdf} %descomentar cu�ndo est� el art�culo terminado.
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
