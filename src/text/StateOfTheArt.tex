@@ -1,12 +1,101 @@
+\label{StateOfTheArt}
 \chapter{State of the art}
+In this chapter we will provide an overview of existing simulations software, and
+software particularly developed for virtual classrooms. We describe the deficiencies
+of those solutions, and why we believe that there is a necessity to develop our
+own simulation.
 
-\section{Agent based models}
-What are Agent based models and why they are interesting for studying social interactions in groups
+\section{Social Simulations and Agent-based models}
+Social Simulations are a special type of Agent-based models (\textbf{ABM}) that are used to study
+the dynamics of groups based on the individual agents that respond to their own
+and other agents expectations\cite{Helbing2012}.
 
-\section{Big Five Personality Trait model}
+NOTE[Have some definition + explanation of what is an agent-based model]
 
-\section{Agent Logic???}
-Where to talk about agent logic and possible ways to define an agent in a multi-agent system?
+\bb
 
-\section{Simulation Environments}
-Mention Unity3d, but as well NetLogo and other environments.
+Social Simulations have been used since the early 1960s to study the dynamics of
+social segregation\cite{Schelling1971} or more recently on the spread of
+contagious diseases\cite{Perez2009} within a city.
+
+The intention of many of those simulations is to find emerging properties of
+the complete system (i.e. the group), which are absent in the individual agents\cite{Jackson2017}.
+This is of particular interest if the the found properties are empirically verified,
+but not understood. 
+
+Simulated systems have the great benefit to be easy to manipulate and produce almost
+no costs to run, making them an excellent tool to study complex dynamic systems.
+
+\section{Agent-based model Software}
+A series of open source and commercial distributed Agent Software\cite{Kravi2015}
+is available. Some of the most popular ones are NetLogo\cite{Tissue2004},
+Swarm [NOTE: Reference for Swarm], or Mesa\cite{Masad2015}, which provide a framework
+to develop multi-agent simulations, often including a simple Visualization and
+a GUI.
+
+\bb
+
+We decided against against using those existing frameworks, and instead develop
+our own solution based on the Unity3d [Note: REF???] Game and Simulation
+Engine.
+
+In particular Unity3d provides us with the following features that are absent
+or underdeveloped in the other frameworks.
+
+\begin{itemize}
+    \item \textbf{State of the Art Visualization:} Unity3D is used to develop triple
+    A computer games and provides the possibility to build simulations with realistic
+    appearing Visuals and even virtual reality environments.
+    \item \textbf{User Interaction:} User interaction if present at all is implemented
+    very poorly in the other simulation frameworks. As User Interaction is essential
+    part in every computer game, Unity3d provides an excellent support for it.
+    \item \textbf{Integration with Machine Learning tools:} In the last year
+    Unity3d has been extending its capabilities as a Agent based modeling framework
+    by including a Machine Learning Agent toolkit that provides easy
+    interface between State of the Art machine Learning Tools like Tensorflow or Pytorch
+    and the Unity simulation.
+    \item \textbf{Actively Maintained:} Many simulation frameworks have been academic endeavors
+    with a short lifespan, and on multiple occasions stopped to be maintained and
+    to be usable after a short period of time. Relying on a commercial sustained
+    framework like Unity3d ensures availability and eases future development of
+    the project.
+\end{itemize}
+
+Those aspects are not essential to the present solution but provide use with
+the possibility to extend the system as is discussed in the Outlook, in the final
+chapter of the Thesis.
+
+\section{Simulations of virtual Classrooms}
+Of particular interest to us are Simulation Systems that focus on a virtual classroom. 
+Several academic and commercial systems have been developed with different objectives in mind.
+
+\bb
+
+Some of those solutions (e.g. TLE TeachLivE\cite{Dieker2014}\cite{Dieker2017} or
+simSchool \cite{Badiee2015}) focus on teacher education, providing a virtual classroom
+that can be used for new teachers to learn how to interact with a class and resolve issues.
+Others (e.g. Katana Sim:Classroom \cite{Blume2019}) are used as a simulation
+environment for academic research, focusing on psychological studies.
+
+\bb
+
+Evaluating the different simulations we found that all of them lacked one or more
+of the following features, and therefore decided to develop our own solution.
+
+\begin{itemize}
+    \item \textbf{OpenSource:} The Simulation should be open source and freely available
+    for academic and commercial purposes, in order to support its adoption and support
+    the sustainability of the project.
+    \item \textbf{Model of Agent Logic:} The agent behavior should depend on an
+    flexible agent logic that is based on empirical psychological studies.
+    \item \textbf{Flexibility:} The simulation should be configure able to scale
+    class size, student profiles and classroom environment.
+    \item \textbf{Reproducibility:} The simulation outcome (except of user interaction) should
+    be reproducible, in order to provide a framework to study particular group dynamics.
+    If multiple runs of the same simulation produce different results, it is unclear
+    how alterations of the simulation configuration effect the outcome.
+    \item \textbf{Data Analysis:} The simulation should include methods and tools
+    to study its results. In particular it should be possible to execute multiple
+    instances of the simulation with slightly changed configurations in order to
+    perform a statistical analysis of the outcome.
+\end{itemize}
