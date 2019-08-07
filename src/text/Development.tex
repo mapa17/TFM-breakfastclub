@@ -194,7 +194,9 @@ the complete life of an individual.
 \end{figure}
 
 \begin{table}[]
-\begin{tabularx}{1.2\textwidth}{|>{\hsize=.2\hsize}X|X|}
+    \makebox[\textwidth][l]{%
+    \begin{minipage}[t]{10cm}
+\begin{tabularx}{1.6\textwidth}{|>{\hsize=.2\hsize}X|X|}
     \hline
     \multicolumn{1}{|c|}{\textbf{Personality Trait}} & \multicolumn{1}{c|}{\textbf{Description}} \\
     \hline
@@ -240,6 +242,9 @@ the complete life of an individual.
   \end{tabularx}
   \label{OCEAN-Model-table}
   \caption{Ocean model factors taken from \cite{Ehrler1999}}
+
+\end{minipage}    
+}%
 \end{table}
 
 \subsubsection{Big-five in the classroom}
@@ -380,5 +385,156 @@ and happiness) are updated at this step.
 
 As for motivation, this internal state is altered by the action performed.
 
+\section{Agent Actions}
+As mentioned shortly before, the agents can perform one of five different actions (i.e.
+Chat, Quarrel, Break, Study alone and Study in groups),
+and each action can be in any one four states (Inactive, Transition, Waiting and Execution).
+
+All actions follow a similar structure, and have three main functions:
+
+\begin{itemize}
+    \item \textbf{Feasible:} Test if it is possible to execute and action. This
+    includes to test for the availability for resources in the environment
+    (e.g. for example if there is a free individual table for a agent to study alone)
+    or the availability of other agents (e.g. in case of a group study if there are
+    other agents at the table willing to study).
+    \item \textbf{Action scoring:} Calculates a score for the action based on the
+    internal states and the personality of the agent.
+    \item \textbf{Action execution:} Makes the agent perform different behaviors
+    based on the state of the action (e.g. in Transition it makes the agent walk toward its goal).
+    In addition it modifies the agents internal states as defined by the simulation
+    mechanics.
+\end{itemize}
+
+Before describing the exact mechanics for the different action we have a look at
+how to calculate the action scores.
+
 \label{action-scores}
 \subsection{Actions Scores}
+As mentioned before each action is scored independently, taking into account the
+internal states and the personality traits of the agent. The generated score is
+a continuos value between 0 and 1.0, where high values should be given if the
+actions is in correspondence with the simulation mechanics, and low values otherwise.
+
+Although the scoring functions differ between the actions, they make use of the
+same basic building blocks.
+
+The main building blocks is one exponential growing and one exponential decaying
+function and a scoring function calculating a wheight sum (see equation \ref{eq3}
+and a visualization in figure \ref{Equatin_figures}). The exponential functions
+have been defined to stay within a range of 0.0 to 1.0 for values of x between 0.0
+and 1.0. In addition, the result of the scoring function is cutoff to stay within
+0.0 and 1.0. The weights for each action are independent and are part
+of the simulation parameters.
+
+All actions will effect happiness and motivation while being in the states waiting,
+transition and execution. For waiting and transition the strength with which
+happiness is altered depends on the agents neuroticism and agreeableness.
+While executing, the agents motivation and happiness are changed based on the
+simulation parameters.
+
+\begin{subequations} 
+\label{eq3}
+\begin{equation}
+    E_{grw}(x) =  \frac{e^{x^2}-1}{e - 1}
+\end{equation}
+\begin{equation}
+    E_{dec}(x) =  \frac{e^{(1 - x)^2}-1}{e - 1}
+\end{equation}
+\begin{equation}
+    score(\alpha,x,\beta,y,\gamma,z) = (\alpha * x) + (\beta * y) + (\gamma * z)
+\end{equation}
+\end{subequations}
+with
+\begin{itemize}
+    \item $\alpha$ the weight of personality
+    \item $\beta$ the weight of motivation
+    \item $\gamma$ the weight of happiness
+\end{itemize}
+
+\begin{figure}[!h]
+    \label{Equatin_figures}
+    \makebox[\textwidth][l]{%
+        \begin{minipage}[t]{4cm}
+            \centering
+            \includegraphics[width=200pt]{ExpDecay}
+            \caption{Exponential Decay}
+        \end{minipage}
+        \hspace{3cm}
+        \begin{minipage}[t]{4cm}
+            \centering
+            \includegraphics[width=200pt]{ExpGrowth}
+            \caption{Exp Growth}
+        \end{minipage}
+    }%
+\end{figure}
+
+\subsubsection{Chat}
+The intention of this action is to recover motivation of the agent, for individuals
+with a high rate on extroversion. In case of chatting, the originating agent will
+randomly select another agent in the classroom to chat with, and approach that agent.
+If that other agent accepts the invitation, and both agents are next to each other,
+the agents start chatting. The agent will repeat a specific number of times to
+chat with the same agent, until giving up and choosing another agent randomly.
+
+The action scored is calculated using the following scoring function
+
+\begin{equation}
+    score(extroversion, w_{per}, E_{dec}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
+\end{equation}
+
+While two agents are chatting, their will produce a bit of noise adding the accumulated noise the classroom.
+
+\subsubsection{Takeing a break}
+The intention of this action is to recover motivation of the agent, for individuals
+with a low rate on extroversion, and therefor is an alternative to chatting.
+When taking a break, agents don't depend on any other agent, and as a behavior
+will start to walk around in the classroom randomly. 
+
+The action scored is calculated using the following scoring function
+
+\begin{equation}
+    score(1.0 - extroversion, w_{per}, E_{dec}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
+\end{equation}
+
+\subsubsection{Quarrel}
+Quarreling is the result of an agents happiness being very low but still having
+some motivation left. If the agent wants to quarrel it will find another agent
+at random, similar to Chat and starts to quarrel with that agent if accepted.
+If the other agent refuses, the initiating agent will repeat its request a fixed
+number of times before trying with another agent.
+
+The action scored is calculated using the following scoring function
+
+\begin{equation}
+    score(agreeableness, w_{per}, E_{grw}(motivation), w_{mot}, E_{dec}(happiness), w_{hap})
+\end{equation}
+
+Once the agents start quarreling, their motivation and happiness will fall drastically.
+In addition quarreling produces a lot of noise that is added to the accumulated
+noise in the classroom.
+Quarreling is special as when the agent stops quarreling, it gets an immediate
+boost in happiness by a value defined as part of the simulation parameters.
+
+\subsubsection{Studying alone}
+If the agent is motivated and happy, it will start to study, preferring
+to study alone in case of low levels of extraversion.
+In order to study alone the agent needs access to a free individual table, and that
+the noise in the classroom is not too high.
+
+The action scored is calculated using the following scoring function
+
+\begin{equation}
+    score(1.0 - extroversion, w_{per}, E_{grw}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
+\end{equation}
+
+\subsubsection{Studying in groups}
+As a counter part to studying alone, agents with high extraversion will start
+to study in case of high levels of happiness and motivation. Agents can begin
+to study if they have taken a seat on a group table with other agents ready to study.
+
+The action scored is calculated using the following scoring function
+
+\begin{equation}
+    score(extroversion, w_{per}, E_{grw}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
+\end{equation}

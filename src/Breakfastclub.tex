@@ -1,11 +1,26 @@
 \documentclass[11pt, a4paper, english]{book}
-\usepackage{estilo_unir}
+\usepackage{unir}
 \usepackage[subpreambles=true]{standalone}
 
 % Fore tables generated with www.tablegenerator.com
 \usepackage[normalem]{ulem}
 \useunder{\uline}{\ul}{}
 \usepackage{tabularx}
+
+\usepackage{float}
+\usepackage{hyperref}
+
+% Used to include code and config files
+\usepackage{listings}
+\usepackage{color}
+\lstset{ 
+  basicstyle=\footnotesize,
+  breaklines=true,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,
+  tabsize=2
+}
 
 \graphicspath{ {images/} }
 
