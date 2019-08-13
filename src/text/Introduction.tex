@@ -5,10 +5,11 @@ of the Master in Artificial Intelligence at UNIVERSIDAD INTERNACIONAL DE LA RIOJ
 
 \bb
 
-As part of the Thesis the student developed an Agent-based simulation named
-\textbf{Breakfastclub} (available at http://github.com/mapa17/breakfastclub) of a virtual classroom in order to study the effect of
-different Personality Traits on happiness and attention in the simulated class.
-This document is describing the development of the project and the results achieved.
+As part of the Thesis we developed an Agent-based simulation named
+\textbf{Breakfastclub} (available at http://github.com/mapa17/breakfastclub) of
+a virtual classroom in order to study the effect of different Personality Traits
+on happiness and attention in a simulated class. This document is describing the
+development of the project and the results achieved.
 
 \bb
 
@@ -23,22 +24,33 @@ and final objectives of the Thesis.
 \item The fourth chapter describes in detail the implementation and technical solution
 to the proposed problem.
 \item The fifth chapter is focused on the Data Analysis of the results generated.
-\item The sixth chapter is providing a conclusion and summary of what has been presented.
+\item The sixth chapter is providing a conclusion and summary of what has been
+presented, as well as an outlook on possible future projects and extensions.
 \end{itemize}
 
 \section{Origin and Motivation}
-Human beings are social animals, and although this has been acknowledged by
-in psychology and the social studies for a long time [NOTE: References?], it is 
-our claim that there is a lack of adequate tools and techniques to study in detail
-the behavior of humans in many different group settings.
+The social climate of modern classrooms have been studied extensively in the past \cite{Anderson1982},
+but common to many social studies, only the results of few empirical studies have been modeled
+successfully. This is changing, and in part because of the availability of
+computational methods and the availability of public data. Methods from statistical
+physics are applied more and more successfully in studying complex social systems
+(an extensive review on the topic can be found in \cite{Castellano2007}).
 
-In particular we are interested in the group dynamics of children in a classroom,
-engaged in a autonomous study group.
+\bb
+
+One method that has proven especially useful in studying social systems are
+\textbf{agent-based models}\cite{Jackson2017} that are a special type of multi-agent systems
+which models the behavior of individuals and can be used to study their interactions
+and emerging social behavior.
+
+\bb
+Our work is focused on studying the group dynamics of children in a classroom, in
+particular that of a autonomous study group.
 
 \bb
 
 We have two goals for this work
 \begin{enumerate}
-    \item Develop a flexible and extendable multi agent based simulation of a virtual classroom
+    \item Develop a flexible and extendable agent-based model of a virtual classroom
     \item Study how different personality traits effect attention and happiness of individuals and the group as a whole
 \end{enumerate}

@@ -1,73 +1,79 @@
 \label{StateOfTheArt}
 \chapter{State of the art}
-In this chapter we will provide an overview of existing simulations software, and
-software particularly developed for virtual classrooms. We describe the deficiencies
-of those solutions, and why we believe that there is a necessity to develop our
-own simulation.
+In this chapter we will provide introduction into what agent-based models are and
+how they are used in the context of social studies. We will provide an overview
+of existing simulations platforms, and software particularly developed to simulate
+a virtual classrooms. We discuss the deficiencies of those systems, and why
+we decided to develop our own.
 
 \section{Social Simulations and Agent-based models}
-Social Simulations are a special type of Agent-based models (\textbf{ABM}) that are used to study
-the dynamics of groups based on the individual agents that respond to their own
-and other agents expectations\cite{Helbing2012}.
+Agent-based models (\textbf{ABM})\cite{Jackson2017} have been used in various fields
+to study complex systems that result from the interaction of many individual agents.
 
-NOTE[Have some definition + explanation of what is an agent-based model]
+Examples of such systems are the stock market, crowds, beehives, social networks and many
+more. Social Simulations are a type of ABM that focus on modeling social dynamics
+of humans or animals \cite{Helbing2012}.
+
+Early examples of such social simulations is Shellings work \cite{Schelling1971}
+studding the dynamics of social segregation or more recently on the spread of
+contagious diseases\cite{Perez2009} within a city.
 
 \bb
 
-Social Simulations have been used since the early 1960s to study the dynamics of
-social segregation\cite{Schelling1971} or more recently on the spread of
-contagious diseases\cite{Perez2009} within a city.
+The intention of many of those simulations is to find emerging social phenomena
+present and empirically observed in the complete system (i.e. the group), but
+which are absent in the individual agents\cite{Jackson2017}.
+Hence is is the search for emerging properties, often observed but not understood,
+that can be explained by the interaction of simple mechanisms of the individual agents.
 
-The intention of many of those simulations is to find emerging properties of
-the complete system (i.e. the group), which are absent in the individual agents\cite{Jackson2017}.
-This is of particular interest if the the found properties are empirically verified,
-but not understood. 
+\bb
 
-Simulated systems have the great benefit to be easy to manipulate and produce almost
-no costs to run, making them an excellent tool to study complex dynamic systems.
+In simulating such multi-agent systems one has to possibility to construct, monitor
+and manipulate the system with perfect granularity and with very little cost, making
+such simulations an excellent tool to study complex dynamic systems.
 
 \section{Agent-based model Software}
-A series of open source and commercial distributed Agent Software\cite{Kravi2015}
-is available. Some of the most popular ones are NetLogo\cite{Tissue2004},
-Swarm [NOTE: Reference for Swarm], or Mesa\cite{Masad2015}, which provide a framework
-to develop multi-agent simulations, often including a simple Visualization and
+A series of open source as well as commercial distributed Agent Software\cite{Kravi2015}
+exists. Some of the more popular ones are NetLogo\cite{Tissue2004},
+Swarm\cite{Minar1996}, or Mesa\cite{Masad2015}, that provide frameworks
+to develop multi-agent simulations, often including visualization and
 a GUI.
 
 \bb
 
 We decided against against using those existing frameworks, and instead develop
-our own solution based on the Unity3d [Note: REF???] Game and Simulation
-Engine.
+our own solution based on the Unity3d\footnote{Developed by Unity Technologies and available from https://unity.com}
+Game and Simulation Engine.
 
 In particular Unity3d provides us with the following features that are absent
-or underdeveloped in the other frameworks.
+or underdeveloped in other frameworks.
 
 \begin{itemize}
     \item \textbf{State of the Art Visualization:} Unity3D is used to develop triple
     A computer games and provides the possibility to build simulations with realistic
-    appearing Visuals and even virtual reality environments.
+    appearing visuals and even virtual reality environments.
     \item \textbf{User Interaction:} User interaction if present at all is implemented
-    very poorly in the other simulation frameworks. As User Interaction is essential
-    part in every computer game, Unity3d provides an excellent support for it.
-    \item \textbf{Integration with Machine Learning tools:} In the last year
+    very poorly in the most simulation frameworks. As User Interaction is an essential
+    part in every computer game, Unity3d provides an excellent support for that.
+    \item \textbf{Integration with other Machine Learning tools:} In the last year
     Unity3d has been extending its capabilities as a Agent based modeling framework
-    by including a Machine Learning Agent toolkit that provides easy
+    by including a Machine Learning Agent toolkit that provides an easy
     interface between State of the Art machine Learning Tools like Tensorflow or Pytorch
     and the Unity simulation.
     \item \textbf{Actively Maintained:} Many simulation frameworks have been academic endeavors
     with a short lifespan, and on multiple occasions stopped to be maintained and
-    to be usable after a short period of time. Relying on a commercial sustained
+    to be available after a short period of time. Relying on a commercial sustained
     framework like Unity3d ensures availability and eases future development of
     the project.
 \end{itemize}
 
-Those aspects are not essential to the present solution but provide use with
-the possibility to extend the system as is discussed in the Outlook, in the final
-chapter of the Thesis.
+Although the current version of the simulation is not making full use of all those
+features at the moment, Unity3d has been chosen to serve as a platform for future
+development based on the results achieved during the thesis.
 
 \section{Simulations of virtual Classrooms}
 Of particular interest to us are Simulation Systems that focus on a virtual classroom. 
-Several academic and commercial systems have been developed with different objectives in mind.
+Several academic and commercial systems have been developed with different objectives.
 
 \bb
 
@@ -86,7 +92,7 @@ of the following features, and therefore decided to develop our own solution.
     \item \textbf{OpenSource:} The Simulation should be open source and freely available
     for academic and commercial purposes, in order to support its adoption and support
     the sustainability of the project.
-    \item \textbf{Model of Agent Logic:} The agent behavior should depend on an
+    \item \textbf{Agent Model:} The agent behavior should depend on an
     flexible agent logic that is based on empirical psychological studies.
     \item \textbf{Flexibility:} The simulation should be configure able to scale
     class size, student profiles and classroom environment.
@@ -95,7 +101,7 @@ of the following features, and therefore decided to develop our own solution.
     If multiple runs of the same simulation produce different results, it is unclear
     how alterations of the simulation configuration effect the outcome.
     \item \textbf{Data Analysis:} The simulation should include methods and tools
-    to study its results. In particular it should be possible to execute multiple
-    instances of the simulation with slightly changed configurations in order to
+    to study the results generated. In particular it should be possible to execute multiple
+    instances of the simulation with slightly changed conditions in order to
     perform a statistical analysis of the outcome.
 \end{itemize}

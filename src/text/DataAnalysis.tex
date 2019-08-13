@@ -2,29 +2,30 @@
 In this chapter we will present how the simulation is run and how the results are analyzed.
 
 \section{Running the simulation}
-
-In order to run a simulation three parts are needed:
+In order to run a simulation three things are needed:
 
 \begin{itemize}
     \item \textbf{simulation software:} Which is a binary file of the simulation software available for Mac/Win/Linux
-    \item \textbf{Simulation Parameters:} A JSON text file that defines Simulation Parameters
+    \item \textbf{Simulation Parameters:} A JSON text file that defines simulation parameters
     \item \textbf{Classroom Profile:} A JSON text file that specifies the psychological profiles of students in the class
 \end{itemize}
 
 The simulation can be run interactively making it possible to observe the progression
 of the simulation, or in headless mode, where no visualization is generated.
-The later one is particularly useful in combination with a increased simulation
-speed. The combination of a headless mode with increased simulation speed can be
-used to run many different simulations in a \textbf{batch mode} like manner.
+The later one is particularly useful when combined with a increased simulation
+speed, in which case many different simulations can be run in a \textbf{batch mode}
+\footnote{Batch mode means that a series of simulations are run consecutively without
+any human supervision or interaction.} like manner.
 
 \bb
 
-Independent of the way the simulation is run, it will generate a CSV file that
+Independent of the way the simulation is run, a CSV output file will be generated that
 documents the progress of the simulation. That CSV file can be opened in any
 arbitrary tabular data processing software (e.g Excel) for manual inspection, but
-is made to be analyzed by a set of python scripts developed for the purpose.
+is made to be analyzed by a set of python scripts developed for the purpose, and
+included with the simulation software stack.
 
-How those scripts are used and what results they generate is described in the following chapters.
+How those scripts are used and what results they generate is described in the following chapter.
 
 \section{Data Analysis Pipeline}
 The Data Analysis performed for the complete thesis is split into three parts, each 
@@ -32,21 +33,26 @@ having a distinct focus, answering a different set of questions.
 
 \begin{enumerate}
     \item \textbf{Simulation:} The goal of the simulation is to study the behavior
-    of a particular classroom, ranging from the behavior of a single agent to the
-    aggregated and average behavior of group as a whole.
-    \item \textbf{Experiment:} How much variation is there between multiple runs of
-    the simulation for the same classroom, slightly changing the classroom profiles and
-    random elements of the simulation?
+    of a particular classroom and combination of agent profiles. Providing insights
+    into the behavior of a single agent and the aggregated and averaged behavior of
+    the group as a whole.
+    \item \textbf{Experiment:} The \textit{Experiment} studies how much variation
+    is there between multiple runs of the simulation of the same classroom,
+    slightly changing the classroom profiles and random elements of the simulation.
     \item \textbf{Study:} Having a expectation on how a specific classroom profile
-    behaves, how two different profiles compare to each other, and how alterations
-    of the personality profile effect group averages?
+    behaves, the \textit{Study} phase asks the question how two different profiles
+    compare to each other, and how alterations of the personality profile effect
+    group averages.
 \end{enumerate}
 
-In the following chapters we will have a look at each step of the pipeline individually,
-as it is not necessary to always run the complete pipeline but based on the question
-one tries to answer only one or two of the first steps.
+In the following sections we will have a look at each step of the pipeline individually,
+as it is not necessary to run the complete pipeline but based on the question
+one tries to answer only one or two of the first steps are necessary.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Simulation}
+
 \begin{figure}[!h]
     \hspace*{-2.0\leftmargin}
     \makebox[\textwidth][l]{%
@@ -59,40 +65,41 @@ one tries to answer only one or two of the first steps.
     }%
 \end{figure}
 
-Simulation is the first step of the analysis, answering the question how a specific
-classroom of agents behaves.
+\textit{Simulation} is the first step of the analysis, answering the question how
+a specific classroom of agents behaves.
 
-The input to the simulation are three things. The simulation config, defining
-all simulation relevant constants that governing how the simulation mechanisms,
-the classroom configuration that defines the psychological profile of students,
+The simulation program takes three input arguments. The simulation config,
+defining all simulation relevant constants that governing how the simulation mechanisms
+works, the classroom configuration that defines the psychological profile of students,
 and a random seed that is used to initialize the random number generator used during
 the simulation.
 
-Examples of the simulation config and classroom config can be found as part of
+Examples files of the simulation config and classroom config can be found as part of
 the appendix (see \ref{ApxSimulationConfig} abd \ref{ApxClassroomProfile}).
 
 The classroom configuration must contain a set of Personality Types and the number
 of students of each type. When the simulation is run, a classroom is dynamically
-generated with agents following the in the classroom configuration defined composition
-of profiles.
+generated and filled with agents as defined.
 
-The python analysis scripts for the simulation will read the CSV file generated
-after the simulation is complete and generate a set of figures containing information
+The python analysis scripts for the simulation will process the CSV file produced
+after the simulation is completed and will generate a set of figures containing information
 about each individual agent, the classroom as a group and a new CSV file that contains
 aggregated information.
 
-\subsubsection{Agent Info}
-The analysis result specific to each agent is a \textbf{Agent Info} figure (see \ref{AgentInfo} showing
-three different figures) that contains information about the distribution and transitions
-between different behaviors performed by the agent. This figure is used to study how
-a specific instance of a psychological type behaves in the given classroom.
-One can observe how much of the overall time an Agent spends Studying alone or example
-and how long on average a single study session lasts.
+\subsection{Agent Info}
+One of the results of the simulation step is the \textbf{Agent Info} figure (see \ref{AgentInfo} showing
+three different agent infos) that is generated for each agent, and contains information
+about the distribution and transitions between different behaviors performed by the agent.
+This figure is used to study how a specific instance of a psychological type behaves
+in the given classroom. One can observe how much of the overall time an Agent
+spends Studying alone or example and how long on average a single study session lasts.
 
-It is interesting to observe how different the different Traits of the Big-Five
-effect the behavior distribution of the individual agent. So could one observe that
-agents high on conscientiousness for example on average have longer learning sessions
-that agents with a low level of conscientiousness.
+\bb
+
+It is interesting to observe the different pattern with which the personality traits
+effect the behavior distribution of the individual agents. One could for example
+observe that agents high on conscientiousness, on average have longer
+learning sessions than agents that are low on conscientiousness.
 
 \begin{figure}[H]
     \label{AgentInfo}
@@ -117,12 +124,15 @@ that agents with a low level of conscientiousness.
     }%
 \end{figure}
 
-\subsubsection{Classroom Aggregates}
-The second result of the simulation analysis is a figure showing classroom
+\subsection{Classroom Aggregates}
+The second result produced by the simulation analysis is a figure showing classroom
 aggregated features over time (see figure \ref{ClassroomAggregates} as an example).
 This figures contains information like the aggregated noise, the average happiness,
 motivation and attention of a class, in addition to information about how many of
 the students are studying or quarreling at a specific moment during the simulation.
+
+This kind of figure is useful to study how personality profiles effect the group
+as a whole, and can be used to search for emerging social phenomena.
 
 \begin{figure}[H]
     \makebox[\textwidth][l]{%
@@ -136,6 +146,7 @@ the students are studying or quarreling at a specific moment during the simulati
 \end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experiment}
 The experiment is the second phase of the data analysis pipeline and is focused
@@ -152,33 +163,49 @@ on evaluating the variance between simulations of the same classroom configurati
     }%
 \end{figure}
 
+In order to have a statistical description of the simulation results, one has to
+run multiple instances of the same simulation (identical simulation  and classroom
+configs) but different seed values for the random number generator used during the simulation.
 
-This is achieved by running multiple instances of the same simulation (identical simulation 
-and classroom configs) but different seed values for the random number generator used
-during the simulation.
+There are several random elements in the simulation. Depending on the classroom
+configuration, agent personality can be partially randomized. The actions selection
+process has a random element, and agent interactions are effected by the output of
+a random number generator.
 
-Depending on the classroom configuration, agent personality can be partially random,
-and the actions selection has a random element, and interactions are effected by
-the random number generator.
+\bb
 
-The results of the experiment phase is a single \textbf{HA-Plot} plot named after
-its axis Attention vs. Happiness. The plot shows a point for each simulation instance based on
-the average attention and happiness of the classroom over the complete simulation.
-In addition the overall happiness and attention average for all instances is
+The result of the experiment phase is a single \textbf{HA-Plot} plot, named after
+its axis Attention and Happiness. The plot shows a a single point for each simulation
+instance, with its position being based on the average attention and happiness of
+the corresponding classroom over the complete simulation.
+
+In addition the average happiness and attention over all instances is
 indicated with two solid lines, and the corresponding standard deviation with
 semi transparent bars.
 
-The plot visualizes the spread between different instances of the simulation, and
+The plot helps to identify the spread between different instances of the simulation, and
 could be used to detect outliers and estimate the stability of a specific classroom
 configuration.
 
 In addition to the HA-Plot a CSV file is generated that contains the average
-happiness and attention values for each agent and classroom for all simulation instances.
-This dataset basically is the numeric equivalent to the generated HA-Plot.
+happiness and attention for each agent and classroom for all simulation instances.
+This dataset is the numeric equivalent to the generated HA-Plot.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Study}
 The last step in the data analysis pipeline is focused on comparing different classroom
 profiles.
+
+In this phase the CSV generated during the Experiment phase is analyzed to
+generate a HA-Plot that contains one ellipse for each classroom profile simulated.
+The center of the ellipse is put to the overall mean of attention and happiness
+of the corresponding set of instances of the same classroom profile, indicating its standard
+deviation by the shape of the ellipse.
+
+This plot gives an visual overview of the effect the different personality profiles
+have compared to each other, and can be used to study the strength and direction of
+change one profile has compared to another.
 
 \begin{figure}[H]
     \makebox[\textwidth][l]{%
@@ -190,9 +217,3 @@ profiles.
     \end{minipage}    
     }%
 \end{figure}
-
-In the last step the CSV generated during the Experiment phase is anlayzed to
-generate a HA-Plot that contains one ellipse for each classroom profile simulated.
-The center of the ellipse are put to the overall mean attention and happiness
-of for the set of instances of the same classroom profile, indicating its standard
-deviation by the shape of the ellipse.
