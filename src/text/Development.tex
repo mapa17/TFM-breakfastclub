@@ -165,11 +165,15 @@ The following are the different factors that influence agent behavior:
 \begin{itemize}
     \item \textbf{Environment:} The availability of tables, and the accumulated noise in the classroom. 
     \item \textbf{Direct agent interaction:} Another agent that accepts ot rejects to chat or quarrel with he agent.
-    \item \textbf{Internal states:} Based on internal states agent logic governes which action is more or less desired by the agent.
+    \item \textbf{Internal states:} Based on internal states agent logic governs which action is more or less desired by the agent.
     \item \textbf{Peer Pressure:} The action an agent selects to perform is influenced on the average action preference of the group.
 \end{itemize}
 
 How peer pressure is modeled is discussed in more detail in \ref{action-scores}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
 
 \label{BigFive}
 \section{Agent Personality Model}
@@ -284,7 +288,11 @@ as simulation parameters in order to reproduce agent behavior that is in agreeme
 with those results.
 
 As a summary of those findings we cite from \cite{Asendorpf2003} where the authors
-write \textit{Together, this literature review suggested the following hypothesis:
+write.
+
+\bb
+
+\textit{Together, this literature review suggested the following hypothesis:
 neuroticism and low extraversion correlate with social inhibition, low agreeableness
 and low conscientiousness with aggressiveness, and conscientiousness and
 culture/intellect/openness with antecedents and outcomes of school achievement.
@@ -321,6 +329,8 @@ revealed low predictive power and accuracy of the model.
 The OCEAN model has therefore been preferred over any alternative.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
 
 \section{Agent Logic}
 As mentioned before the simulation is using a heterogeneous agent model with agents
@@ -472,6 +482,9 @@ All actions follow a similar structure, and have three main functions:
 Before describing the exact mechanics for the different action we have a look at
 how to calculate the action scores.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
 \label{action-scores}
 \section{Actions Scores}
 As mentioned before each action is scored independently, taking into account the
