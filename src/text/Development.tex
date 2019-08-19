@@ -144,7 +144,7 @@ interaction between the components or agents following basic rules.
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=200pt]{GroupDynamics} 
+    \includegraphics[width=400pt]{GroupDynamics} 
     \caption{Group Dynamics}
     \label{GroupDynamics}
 \end{figure}
@@ -283,7 +283,14 @@ We used those empirical found associations to define and tune agent logic as wel
 as simulation parameters in order to reproduce agent behavior that is in agreement
 with those results.
 
-\note{Add table with summary of the publications mentioned before??}
+As a summary of those findings we cite from \cite{Asendorpf2003} where the authors
+write \textit{Together, this literature review suggested the following hypothesis:
+neuroticism and low extraversion correlate with social inhibition, low agreeableness
+and low conscientiousness with aggressiveness, and conscientiousness and
+culture/intellect/openness with antecedents and outcomes of school achievement.
+These correlations are consistently found all throughout childhood.}
+
+\bb
 
 Although it is well studies how the Big-Five behave on an individual level, we
 found very few studies that focused on group dynamics influenced by the
@@ -312,11 +319,6 @@ revealed low predictive power and accuracy of the model.
 \bb
 
 The OCEAN model has therefore been preferred over any alternative.
-
-
-
-
-
 
 
 
@@ -361,12 +363,13 @@ do not effect the action score bias.
 
 \begin{equation}
     \label{eq1}
-    action-score-bias(a_i) = A * e^{-(1.0 - C) * t}
+    action-score-bias(a_i) = \alpha * e^{-(1.0 - C) \beta * t}
 \end{equation}
 with
 \begin{itemize}
     \item $a_i$ is the action i
-    \item where A is a simulation parameter defining the maximum bias
+    \item where $\alpha$ is a simulation parameter defining the maximum bias
+    \item where $\beta$ is a simulation parameter defining a dampening factor scaling exponential decline
     \item where C is the agents conscientiousness
     \item where t is the number of ticks the current task is executed
 \end{itemize}
@@ -381,7 +384,7 @@ gives other actions a chance to be selected.
 
 \begin{equation}
     \label{eq2}
-    p(a_i) = \frac{s_i^2}{\sum s_i^2} \\
+    p(a_i) = \frac{s_i^3}{\sum s_i^3} \\
 \end{equation}
 
 with

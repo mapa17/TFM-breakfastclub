@@ -1,42 +1,6 @@
-\chapter{Results, Conclusion and outlook}
-In this chapter we will present the results achieved and draw final conclusions.
-The chapter ends with an outlook on possible directions to continue and improve
-the work done so far.
-
-\section{Results}
-Here we will present hopefully the interesting results achieved \dots
-
-Bla bla bla
-
-more bla bla bla
-
-For the final analysis a set of classroom profiles have been selected
-
-\begin{itemize}
-    \item \textbf{Class A:} Description
-    \item \textbf{Class B:} ...
-    \item \textbf{Class C:} ...
-\end{itemize}
-
-Comparing those classroom profile produces the following HA-Plot
-
-\begin{figure}[H]
-    \makebox[\textwidth][l]{%
-    \begin{minipage}[t]{500pt}
-        \centering
-        \includegraphics[width=400pt]{StudyResults}
-        \caption{Final Study results}
-        \label{StudyResults}
-    \end{minipage}    
-    }%
-\end{figure}
-
-This result can be interpreted to be ....
-
-Bla bla bla
-
-\dots
-
+\chapter{Conclusion and outlook}
+In this chapter we will draw our final conclusions, including an outlook on
+possible directions to continue and improve the work done so far.
 
 \section{Conclusion}
 As part of the thesis we have developed a multi-agent model that is simulation a virtual classroom.
@@ -66,6 +30,22 @@ time frame.
 The following is a list of possible improvements, as well as ideas for follow up projects.
 
 \begin{itemize}
+    \item \textbf{Improve classroom aggregate analysis:}
+    The HA-Plot for different classroom configurations is a very concise representation
+    of multiple instances of the same classroom configuration. Many of the temporal
+    dynamics shown in the classroom aggregate plots are not visible in the HA-Plot.
+    In addition there is no direct way to compare Classroom aggregate plots.
+
+    \bb
+
+    Methods from Time series analysis could be used to extract information about
+    the signal dynamics (like periodicity, entropy, moments, ...) in order to compare
+    instances of the same classroom configuration or between different configurations.
+
+    \bb
+
+    It would be particularly useful extract a \textit{typical} classroom aggregate
+    showing the classroom dynamics for a configuration and not only a instance.
     \item \textbf{Interactive Simulation:} 
     On way to extend the how the simulation can be used, is to make the simulation
     interactive. Doing so would provide the user with the option to force agents

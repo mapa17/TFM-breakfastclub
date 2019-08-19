@@ -43,13 +43,54 @@ One method that has proven especially useful in studying social systems are
 which models the behavior of individuals and can be used to study their interactions
 and emerging social behavior.
 
-\bb
-Our work is focused on studying the group dynamics of children in a classroom, in
-particular that of a autonomous study group.
+\subsection{Simulations in the Social Sciences}
+In their work \cite{gilbert2005simulation} the authors give a short history of
+simulations in the social sciences. They explain different reasons why simulations
+can be applied with different objectives,ranging from better understanding a social
+system, to prediction, to substitute human experts, as training tools, entertainment
+or as tools to for discovery and formalization of models.
 
 \bb
 
-We have two goals for this work
+Specially the later applications of simulations in the social sciences are interesting
+to us, as traditional approaches to understand complex phenomena in the social sciences
+have been focused on comparing the results of empirical studies to hypothesis
+generated with theoretical models.
+
+One of the difficulty with this approach are the increasing costs of such studies
+in face of more and more complex models. The growing complexity and the degree of
+freedom of these models, demand a equally growing sample size increasing costs and the
+resources needed to generate results that can be used to verify and reject hypothesis
+in order to improve the models.
+
+\bb
+
+Figure \ref{Cycle-TSE} demonstrates how simulations can be used to support
+the discovery and improvements of new models and theories. Given a theoretical model
+one can produce hypothesis that are used to situate a simulation, providing the initial
+conditions and input parameters for the simulation. The simulation models is than
+run to produce concrete predictions, that can be compared to experimental studies.
+The overlap between the prediction and measured results is than used to form new
+hypothesis that can be used to improve theory and future models.
+
+
+\begin{figure}[H]
+    \makebox[\textwidth][c]{%
+    \begin{minipage}[t]{10cm}
+        \centering
+        \includegraphics[width=300pt]{Theory-Simulation-Experiment}
+        \caption{Cycle of Theory, Simulation and Experiment }
+        \label{Cycle-TSE}
+    \end{minipage}    
+    }%
+\end{figure}
+
+\bb
+
+As will be described in more detail later, our work is focused on studying the group
+dynamics of children in a classroom, in particular that of a autonomous study group.
+
+In order to achieve this, we split the task in two goals
 \begin{enumerate}
     \item Develop a flexible and extendable agent-based model of a virtual classroom
     \item Study how different personality traits effect attention and happiness of individuals and the group as a whole
