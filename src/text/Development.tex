@@ -387,6 +387,18 @@ with
 \subsection{Action selection}
 Based on the scores a single action is selected probabilistically, giving preference
 to the action with the highest score.
+
+\bb
+
+As mentioned shorty in the chapter on agent logic, the action selection is not only
+depended on the agents own desires, but is modulated by \textbf{peer pressure}.
+This aspect was included in the model by building the action score vector that is
+used to select an action, as a weighted sum of the action score vector of the agent
+plus the mean action score vector of the classroom (i.e. all agents in the classroom).
+The weight given to the classroom average is defined by a simulation parameter.
+
+\bb
+
 The probability for a action to be selected is defined by the square of the normalized
 action scores (see equation \ref{eq2}). Taking the squared action score makes sure
 that the highest rated score has a clear advantage over the other actions, but still
