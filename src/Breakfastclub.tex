@@ -8,7 +8,7 @@
 \usepackage{tabularx}
 
 \usepackage{float}
-\usepackage{hyperref}o
+\usepackage{hyperref}
 
 % To have sorted bibliography by last name
 \usepackage[numbers]{natbib}
@@ -30,7 +30,7 @@
 \title{Breakfastclub - Agent-based model simulation of a virtual classroom}
 \author{Manuel Pasieka}
 \date{\today}
-\director{Michael Kickmeier-Rust, Verdu Perez Elena}
+\director{Michael Kickmeier-Rust, Elena Verdu Perez}
 \nombreciudad{Valencia}
 
 %---------------------------
@@ -44,9 +44,9 @@
 \begin{document}
 \renewcommand{\listfigurename}{Figures}
 \renewcommand{\listtablename}{Tables}
-\renewcommand{\contentsname}{Additional Content}
-\renewcommand{\figurename}{Figura}
-\renewcommand{\tablename}{Tabla} 
+\renewcommand{\contentsname}{Content}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table} 
 
 \newcommand{\bb}[1][5mm]{\vspace{#1}}
 
@@ -86,12 +86,14 @@
 
 \include{text/Conclusion}
 
+\chapter{Bibliography}
+\bibliographystyle{ieeetr} 
+\bibliography{bibliography}
+
 \chapter{Article}
 % TODO: Have to center pdf
 \includepdf[pages=-, fitpaper=true]{appendix/Article.pdf} 
 
-\bibliographystyle{apa} 
-\bibliography{bibliography}
 
 \appendix
 

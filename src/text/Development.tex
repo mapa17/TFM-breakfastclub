@@ -1,6 +1,6 @@
 \chapter{Development}
 This chapter describes in detail the main components of the simulation and how
-they where implemented. How and why certain decision have been taken and alternative
+they where implemented. How and why certain decisions have been taken and alternative
 solutions.
 
 The project was developed in an iterative fashion, starting out with a
@@ -24,7 +24,7 @@ agents. The simulation is implemented as a Unity3 application with a single scen
 that is dynamically generated based on the simulation and classroom configuration.
 
 All objects (Agents and Tables) in the classroom are Unity GameObjects that are
-updated in defined sequence with a constant rate of 1 Hz. The agent logic is therefor
+updated in a defined sequence with a constant rate of 1 Hz. The agent logic is therefor
 running in discrete steps, although the underlying Unity3d engine is executed
 continuously (as much as this is possible on a discrete computer system).
 
@@ -35,8 +35,8 @@ is implemented as C\# scripts that interface the Unity3d Framework.
 
 \section{Agent-based model}
 As described briefly in the chapter on the State of the Art (\ref{StateOfTheArt})
-a agent-based model is a multi agent simulation with a special focus on the interaction
-of agents and resulting group dynamics. The main components of a Agent-based
+an agent-based model is a multi agent simulation with a special focus on the interaction
+of agents and resulting group dynamics. The main components of an Agent-based
 model are the following:
 
 \begin{itemize}
@@ -47,13 +47,13 @@ model are the following:
     properties, sensors and actors that interact with each other and with the environment.
     \item \textbf{the simulation mechanics and agent logic:}  The simulation mechanics
     controls how agents interact with each other, how the environment changes
-    as of actions of the agent or external factors (e.g. a simulation protocol defining
-    a change in the environment). The agent logic governs the dynamic interaction between
+    as a result of the actions of the agent or external factors (e.g. a simulation protocol defining
+    a change in the environment). The agent logic governs the dynamic interactions between
     the internal agent state, its behavior and its properties.
 \end{itemize}
 
 \subsection{The environment: a classroom}
-In our case the environment is classroom that contains multiple tables for
+In our case the environment is a classroom that contains multiple tables for
 students to study individually and in small groups. In addition the environment
 is modeling the noise that is accumulating in the classroom resulting from the
 different actions performed by the agents. The noise model implemented, is
@@ -99,14 +99,14 @@ in a specific state
 
 \begin{itemize}
     \item \textbf{Inactive:} The action is not active (This is needed because of implementation details). 
-    \item \textbf{Transition:} The agent is walking towards its goal to in order to perform the action.
+    \item \textbf{Transition:} The agent is walking towards its goal in order to perform the action.
     \item \textbf{Waiting:} The agents is waiting for either some response of another agent or the environment in order to perform the action.
     \item \textbf{Executing:} The agent is executing the action.
 \end{itemize}
 
-As the agents behavior depends on the internal states but as well is effecting them,
-each agent itself is a \textbf{dynamics systems} that is governed by the agent logic, based
-on the personality profile of the agent (see a visualization of this cycle in figure \ref{AgentDynamics}).
+The agents behavior depends on the internal states, as well as is affecting them.
+Each agent is itself a \textbf{dynamics systems} that is governed by the agent logic and based
+on its personality profile (see a visualization of this cycle in figure \ref{AgentDynamics}).
 
 \begin{figure}[]
     \centering
@@ -125,14 +125,14 @@ interaction of multiple dynamic systems (i.e. agents and environment)
 \bb
 
 This \textbf{multi level dynamic system} can express very sophisticated behavior and dynamics,\
-making it one of the main reasons agent-based models are such a powerfully tool to study
-real world social phenomena. One of the most curious aspects of complex dynamic systems
+making it one of the main reasons agent-based models are such a powerful tool to study
+real world social phenomena. One of the most curious aspect of complex dynamic systems
 are \textbf{emergent phenomena}\cite{Corning2002} which describe aspects of the
 complete system (i.e. classroom), absent in the individual (i.e. children) components.
 
 \bb
 
-One examples of emerging properties is the \textit{wetness} of Water that only appears in a
+One example of emerging properties is the \textit{wetness} of Water that only appears in a
 ensemble of many water molecules, and not present in a single individual molecule. 
 Another famous example is \textbf{Cowans Game of Life}\cite{Adamatzky2010}
 that shows the almost infinite complexity generated by a cellular automata simulating
@@ -156,7 +156,7 @@ Heterogeneous agent models on the other side can differ in the agents logic, its
 or based on some parameters in its configuration.
 
 In our case the simulation contains heterogeneous agents that differ, based on parameters
-in their Personality Traits. All agents follow the same logic and have teh same
+in their Personality Traits. All agents follow the same logic and have the same
 capabilities.
 
 \subsection{Agent Behavior Selection}
@@ -164,9 +164,9 @@ The following are the different factors that influence agent behavior:
 
 \begin{itemize}
     \item \textbf{Environment:} The availability of tables, and the accumulated noise in the classroom. 
-    \item \textbf{Direct agent interaction:} Another agent that accepts ot rejects to chat or quarrel with he agent.
+    \item \textbf{Direct agent interaction:} Another agent that accepts ot rejects to chat or quarrel with the agent.
     \item \textbf{Internal states:} Based on internal states agent logic governs which action is more or less desired by the agent.
-    \item \textbf{Peer Pressure:} The action an agent selects to perform is influenced on the average action preference of the group.
+    \item \textbf{Peer Pressure:} The action an agent selects to perform is influenced by the average action preference of the group.
 \end{itemize}
 
 How peer pressure is modeled is discussed in more detail in \ref{action-scores}.
@@ -183,8 +183,8 @@ witch is modeled on a set of \textbf{Personality Traits}.
 It is not novel to use personality traits in ABM, but previous works\cite{Gautam2009}
 modeled very abstract personality traits that have no psychological bases.
 
-We therefore where careful, to chose an established and widely used personality traits model.
-The \textbf{OCEAN} personality trait model(\cite{Tupes1961}, \cite{John1999}), common known as the \textbf{Big-Five}, has been developed
+We therefore where careful, to choose an established and widely used personality traits model.
+The \textbf{OCEAN} personality trait model(\cite{Tupes1961}, \cite{John1999}), commonly known as the \textbf{Big-Five}, has been developed
 in the 1960s and has since been used in applied and theoretical psychology.
 It is based on factor analysis of empirical studies (mostly self description of patients about their
 behavior and self image).
@@ -195,7 +195,7 @@ the personality of an individual, whereby the extremes of each dimension are ass
 with typical behaviors or thought patterns (see figure \ref{OCEAN-Model} for a graphical
 summary).
 
-A short description of the different dimension been taken from\cite{Ehrler1999}
+A short description of the different dimension has been taken from\cite{Ehrler1999}
 can be found in the table \ref{OCEAN-Model-table}.
 
 \subsection{Stability of Personality Traits}
@@ -204,7 +204,7 @@ by the OCEAN model really are. Some studies (\cite{Srivastava2003} \cite{Soto201
 show gender differences and systematic changes of traits during the lifetime of 
 a person, and specially during adolescence. Other studies on the other side, found
 results(\cite{Soldz1999}, \cite{Cobb-Clark2012}) on the stability of personality traits for a very long time or even the
-complete life or an individual.
+complete life of an individual.
 
 \bb
 
@@ -217,7 +217,7 @@ to be a powerful predictor of personality traits.
 The concrete origins and dynamics of personality traits go beyond this work, and
 we decided there is enough evidence in the literature to justify the OCEAN
 model as a useful personality model and the personality traits are stable enough
-to be taken as constant for your purposes.
+to be taken as constant for our purposes.
 
 \begin{figure}[h]
     \centering
@@ -234,47 +234,47 @@ to be taken as constant for your purposes.
     \multicolumn{1}{|c|}{\textbf{Personality Trait}} & \multicolumn{1}{c|}{\textbf{Description}} \\
     \hline
     
-    Openess & The general tendency to be curious about both inner and outer worlds.
+    Openess & \textit{The general tendency to be curious about both inner and outer worlds.
     O includes the elements of an active imagination, aesthetic sensitivity,
     attentiveness to inner feelings, preference for variety, intellectual
     curiosity, and independence of judgment. A high O also includes individuals
     who are unconventional, willing to question authority, and ready to entertain
-    new ethical and social ideas. \\
+    new ethical and social ideas.} \\
     \hline
     
-    Conscientiousness & The general tendency to be able to resist impulses and
+    Conscientiousness & \textit{The general tendency to be able to resist impulses and
     temptations. The conscientious individual is purposeful, strong-willed, and
     determined.
     On the positive side, high C is associated with academic and occupational
     achievement; on the negative side, it may lead to annoying
     fastidiousness, compulsive neatness, or workaholic behavior, Low C’s are not
     necessarily lacking in moral principles, but they are less exacting
-    in applying them. \\
+    in applying them.} \\
     \hline
     
-    Extraversion & The general tendency to be outgoing. In addition, high E’s
+    Extraversion & \textit{The general tendency to be outgoing. In addition, high E’s
     prefer large groups and gatherings and are assertive, active, and talkative.
     They like stimulation and tend to be cheerful in disposition. They are upbeat,
-    energetic, and optimistic. \\ 
+    energetic, and optimistic.} \\ 
     \hline
     
-    Agreeableness & The general tendency to be altruistic. The high A is
+    Agreeableness & \textit{The general tendency to be altruistic. The high A is
     sympathetic to others and eager to help them, and believes that others will
     be equally
     helpful in return. By contrast, the low A is antagonistic and egocentric,
-    skeptical of others’ intentions, and competitive rather than cooperative. \\
+    skeptical of others’ intentions, and competitive rather than cooperative.} \\
     \hline
     
-    Neuroticism & The general tendency to experience negative affects such as fear,
+    Neuroticism & \textit{The general tendency to experience negative affects such as fear,
     sadness, embarrassment, anger, guilt, and disgust is the core of the N domain. 
     However, N includes more than susceptibility to psychological distress. Perhaps
     because disruptive emotions interfere with adaptation, those
     who score high in N are also prone to have irrational ideas, to be less able
-    to control their impulses, and to cope more poorly then others with stress. \\
+    to control their impulses, and to cope more poorly then others with stress.} \\
     \hline
   \end{tabularx}
   \label{OCEAN-Model-table}
-  \caption{Ocean model factors taken from \cite{Ehrler1999}}
+  \caption{Table: Ocean model factors taken from \cite{Ehrler1999}}
 
 \end{minipage}    
 }%
@@ -301,7 +301,7 @@ These correlations are consistently found all throughout childhood.}
 
 \bb
 
-Although it is well studies how the Big-Five behave on an individual level, we
+Although it is well studied how the Big-Five behave on an individual level, we
 found very few studies that focused on group dynamics influenced by the
 Big-Five. One work that we did find\cite{Selfhout2010} studied how the Big-Five
 influence the forming of new friendships in adolescence, but limited the study
@@ -314,7 +314,7 @@ peers elevate the academic performance of less persistent peers without costs to
 those peers or themselves.
 
 To the best of your knowledge there is no previous work that uses the Big-Five
-personality trait model to studies how group dynamics in a classroom are affected
+personality trait model to study how group dynamics in a classroom are affected
 by different personality profiles.
 
 \subsection{Alternatives to the Big-Five}
@@ -322,7 +322,7 @@ The Big-Five model is not the only popular personality trait model commonly used
 Another model, specially popular in the area of management and labour market, is the
 Myers Briggs Type Indicator \textbf{MBTI}, which assigns each individual to one
 of 16 possible personality types. Although popular, there seems to be no scientific
-basis for the model and scientific investigation into it\cite{Pittenger1993}
+basis for the model and scientific investigation\cite{Pittenger1993}
 revealed low predictive power and accuracy of the model.
 
 \bb
@@ -334,9 +334,9 @@ The OCEAN model has therefore been preferred over any alternative.
 
 \section{Agent Logic}
 As mentioned before the simulation is using a heterogeneous agent model with agents
-differ in their personality traits, but share the same logic and capabilities.
+that differ in their personality traits, but share the same logic and capabilities.
 
-The logic is executed independently on each agent, and is implemented as a infinite
+The logic is executed independently on each agent, and is implemented as an infinite
 loop, repeating the following steps
 
 \begin{enumerate}
@@ -349,7 +349,7 @@ loop, repeating the following steps
 
 \subsection{Calculating action scores}
 The agent can execute one of five actions (see the section \ref{agent} about available actions).
-In order to decide witch action to execute, a score is calculated for each action independently.
+In order to decide which action to execute, a score is calculated for each action independently.
 Section \ref{action-scores} covers the action score calculation in detail. 
 The score of an action depends on the the internal states of the agent and its
 psychological profile.
@@ -369,7 +369,7 @@ The action score bias depends on the conscientiousness of the agent and is follo
 exponential decay curve, where time is the number of ticks the agent is performing
 the current action. The number of ticks is only taken into account while the action is executed,
 not in its other states, making sure that \textit{Transitions} or \textit{Waiting}
-do not effect the action score bias.
+do not affect the action score bias.
 
 \begin{equation}
     \label{eq1}
@@ -390,7 +390,7 @@ to the action with the highest score.
 
 \bb
 
-As mentioned shorty in the chapter on agent logic, the action selection is not only
+As mentioned shorty in the chapter on agent logic, the action selection does not only
 depended on the agents own desires, but is modulated by \textbf{peer pressure}.
 This aspect was included in the model by building the action score vector that is
 used to select an action, as a weighted sum of the action score vector of the agent
@@ -415,20 +415,28 @@ with
     \item where $s_i$ is the score for action i
 \end{itemize}
 
-
 \subsection{Action execution}
-The selected action it is evaluated if it can be performed, and if this is possible
-than the action is executed. If the action cannot be performed, the agent is forced
-to take a break, which works as the default action. In addition if it is not possible
-to perform an action, the agent keeps track of what its desired action is, and what
-the action that it is executing instead. 
+The selected action is evaluated if it can be performed, and if this is possible
+then the action is executed. If the action cannot be performed, the second \textit{best}
+action is taken. In case the second action is not possible, the agent is forced
+to take a break. In addition if it is not possible to perform an action, the agent
+keeps track of what its desired action is, and what action is executed instead. 
+
+The complete decision sequence evaluated is shown in the decision tree at \ref{ActionSectionFigure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=400pt]{ActionSelection} 
+    \caption{Action Selection Decision Tree}
+    \label{ActionSectionFigure}
+\end{figure}
 
 \subsection{Handling Interaction}
 Some of the agent behaviors like \textit{Chat} and \textit{Quarrel} depend on direct
-interactions between agents. Meaning that if agent A want to chat with agent B (who is
-randomly selected from the available agents), than Agent A depends on B
+interactions between agents. Meaning that if agent A wants to chat with agent B (who is
+randomly selected from the available agents), then Agent A depends on B
 \textit{accepting} its invitation to chat. This mechanism is implemented
-by agent A is sending a request for chatting to agent B, and agent B in return
+by agent A who is sending a request for chatting to agent B, and agent B in return
 decides to either accept or reject the invitation. 
 
 In case the request is accepted both agents perform the action (i.e. Agent B will
@@ -439,16 +447,16 @@ sending another request to the same agent B, or start over with another agent.
 
 Agent B decides its response depending on a random factor and its personality traits.
 In case of chat the relevant personality trait is \textit{conscientiousness} and
-in case of quarrel \textit{agreeableness}. The random factors is a number between 0.0
+in case of quarrel \textit{agreeableness}. The random factor is a number between 0.0
 and 1.0 that is randomly generated and compared to the personality trait.
 Is that number equal or bigger than the corresponding personality trait, the agent
 will accept the interaction.
 
 \bb
 
-This mechanism reflect the empirical findings that agents with a high level of
-conscientiousness are less likely to be distracted from the their current task,
-and high level of agreeableness, reducing the chance to quarrel, as it is associated
+This mechanism reflect empirical findings that agents with a high level of
+conscientiousness are less likely to be distracted from their current task,
+and a high level of agreeableness, reducing the chance to quarrel, as it is associated
 with less involvement in conflicts.
 
 \subsection{Updating internal states}
@@ -461,7 +469,7 @@ and happiness are updated at this point.
     and the executed action is the desired action. In case the agent
     is executing a not desired action happiness is decreased by a factor (a
     simulation parameter) that is scaled by the agents neuroticism. In addition
-    happiness is effected by the different actions (discussed later).
+    happiness is effected by different actions (discussed later).
     \item \textbf{Attention:} is calculated in case the agent is studying (either
     alone or in a group). It is calculated by taking the sum of its motivation
     adding conscientiousness and subtracting the noise in the classroom.
@@ -472,15 +480,15 @@ As \textit{motivation} is concerned, this internal state is altered by the curre
 \section{Actions}
 As mentioned before, agents have the capability to perform one of five actions (i.e.
 Chat, Quarrel, Break, Study alone and Study in groups),
-with each action being in one four states (Inactive, Transition, Waiting and Execution)
+with each action being in one of four states (Inactive, Transition, Waiting and Execution)
 at each moment in time.
 
 All actions follow a similar structure, and have three main functions:
 
 \begin{itemize}
-    \item \textbf{Test Feasibility:} Test if it is possible to execute and action. This
+    \item \textbf{Test Feasibility:} Test if it is possible to execute an action. This
     includes to test for the availability for resources in the environment
-    (e.g. for example if there is a free individual table for a agent to study alone)
+    (e.g. for example if there is a free individual table available)
     or the availability of other agents (e.g. in case of a group study if there are
     other agents at the table willing to study).
     \item \textbf{Action scoring:} Calculates a score for the action based on the
@@ -491,7 +499,7 @@ All actions follow a similar structure, and have three main functions:
     to the simulation mechanics.
 \end{itemize}
 
-Before describing the exact mechanics for the different action we have a look at
+Before describing the exact mechanics for the different actions we have a look at
 how to calculate the action scores.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,12 +508,12 @@ how to calculate the action scores.
 \label{action-scores}
 \section{Actions Scores}
 As mentioned before each action is scored independently, taking into account the
-internal states and the personality traits of the agent. The score calculate reflects
+internal states and the personality traits of the agent. The score calculated reflects
 how appropriate the specific action is for the personality and the internal state
 of the agent.
 
 The generated score is a continuos value between 0 and 1.0, where high values
-are given if the actions is in correspondence with the simulation mechanics, and
+are given if the action is in correspondence with the simulation mechanics, and
 low values otherwise.
 
 Although the scoring differs between the specific actions, all of them make use
@@ -528,7 +536,7 @@ is cutoff to stay within 0.0 and 1.0.
 \bb
 
 As mentioned before, the internal states happiness and motivation are effected by
-the action the agent is performing. How the internal states are effected, depends
+the action the agent is performing. How the internal states are affected, depend
 on the state of the action, and differs between \textit{Waiting, Transition} and \textit{Execution}.
 Where for \textit{Waiting} and \textit{Transition} the effect strength on happiness is modulated
 by the agents neuroticism and agreeableness, and during \textit{Executing}
@@ -544,7 +552,7 @@ simulation parameter.
     E_{dec}(x) =  \frac{e^{(1 - x)^2}-1}{e - 1}
 \end{equation}
 \begin{equation}
-    weighted_sum(\alpha,x,\beta,y,\gamma,z) = (\alpha * x) + (\beta * y) + (\gamma * z)
+    weighted_{sum}(\alpha,x,\beta,y,\gamma,z) = (\alpha * x) + (\beta * y) + (\gamma * z)
 \end{equation}
 \end{subequations}
 with
@@ -577,33 +585,33 @@ by agents with high rates on extroversion. In order to chat, the agent will
 randomly select another agent in the classroom to chat with, and approach that agent.
 If the other agent accepts the invitation, and both agents are next to each other,
 the agents will start chatting. If the request was rejected, the agent will repeat
-to send requests for a specific number of times to, before giving up and choosing
+to send requests for a specific number of times, before giving up and choosing
 another agent to start over.
 
 The action scored is calculated using the following scoring function
 
 \begin{equation}
-    weighted_sum(extroversion, w_{per}, E_{dec}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
+    weighted_{sum}(extroversion, w_{per}, E_{dec}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
 \end{equation}
 
 While the agents are chatting, they will produce a bit of noise adding the
-accumulated noise the classroom.
+accumulated noise in the classroom.
 
-\subsubsection{Takeing a break}
-The intention of this action is to recover motivation of the agent, for individuals
-with low rates on extroversion, working as an alternative to chatting.
+\subsubsection{Taking a break}
+The intention of this action is to recover motivation, for agents
+with low rates on extroversion (working as an alternative to chatting).
 When taking a break, agents don't depend on any other agent, and will start to
 wander around in the classroom randomly, performing a random walk, causing no noise
 while doing so.
 
-The action scored is calculated using the following scoring function
+The action score is calculated using the following scoring function
 
 \begin{equation}
     weighted_sum(1.0 - extroversion, w_{per}, E_{dec}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
 \end{equation}
 
 \subsubsection{Quarrel}
-Quarreling is the result of an agents happiness being very low and being at least
+Quarreling is the result of an agent's happiness being very low and being at least
 medium to highly motivated. In order to quarrel the agent has to find another agent
 to do so. Similar to Chat the agent will select another agent randomly and starts
 to quarrel with that agent if accepted. If the other agent refuses, the unhappy
@@ -613,12 +621,12 @@ Once the agents start quarreling, their motivation and happiness will fall drast
 In addition quarreling produces a lot of noise that is added to the accumulated
 noise in the classroom.
 When the agents stop to quarrel as special mechanism is invoked, immediately
-increasing the happiness of the agents by a fixed value (simulation parameters).
+increasing the happiness of the agent by a fixed value (simulation parameters).
 
-The action scored is calculated using the following scoring function
+The action score is calculated using the following scoring function
 
 \begin{equation}
-    weighted_sum(agreeableness, w_{per}, E_{grw}(motivation), w_{mot}, E_{dec}(happiness), w_{hap})
+    weighted_{sum}(agreeableness, w_{per}, E_{grw}(motivation), w_{mot}, E_{dec}(happiness), w_{hap})
 \end{equation}
 
 
@@ -628,9 +636,9 @@ to study alone in case of low levels of extroversion. In order to study alone th
 agent needs access to a free individual table, and that the noise in the classroom
 is not too high. The acceptable noise level for an agent is depending on its
 conscientious, sustaining higher noise levels with higher rates of conscientious.
-Studying alone increases noise levels slightly.
+Studying alone increases the noise levels slightly.
 
-The action scored is calculated using the following scoring function
+The action score is calculated using the following scoring function
 
 \begin{equation}
     weighted_sum(1.0 - extroversion, w_{per}, E_{grw}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})
@@ -642,7 +650,7 @@ in groups. What agents need to do so, is a seat on a group table and other agent
 at the table that are willing to study. Groups studying increase the noise level
 in the class by a medium amount.
 
-The action scored is calculated using the following scoring function
+The action score is calculated using the following scoring function
 
 \begin{equation}
     weighted_sum(extroversion, w_{per}, E_{grw}(motivation), w_{mot}, E_{grw}(happiness), w_{hap})

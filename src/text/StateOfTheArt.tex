@@ -3,7 +3,7 @@
 In this chapter we will provide introduction into what agent-based models are and
 how they are used in the context of social studies. We will provide an overview
 of existing simulations platforms, and software particularly developed to simulate
-a virtual classrooms. We discuss the deficiencies of those systems, and why
+a virtual classroom. We discuss the deficiencies of those systems, and why
 we decided to develop our own.
 
 \section{Social Simulations and Agent-based models}
@@ -15,7 +15,7 @@ more. Social Simulations are a type of ABM that focus on modeling social dynamic
 of humans or animals \cite{Helbing2012}.
 
 Early examples of such social simulations is Shellings work \cite{Schelling1971}
-studding the dynamics of social segregation or more recently on the spread of
+studying the dynamics of social segregation or more recently on the spread of
 contagious diseases\cite{Perez2009} within a city.
 
 \bb
@@ -23,12 +23,12 @@ contagious diseases\cite{Perez2009} within a city.
 The intention of many of those simulations is to find emerging social phenomena
 present and empirically observed in the complete system (i.e. the group), but
 which are absent in the individual agents\cite{Jackson2017}.
-Hence is is the search for emerging properties, often observed but not understood,
+Hence it is the search for emerging properties, often observed but not understood,
 that can be explained by the interaction of simple mechanisms of the individual agents.
 
 \bb
 
-In simulating such multi-agent systems one has to possibility to construct, monitor
+With simulating such multi-agent systems one has the possibility to construct, monitor
 and manipulate the system with perfect granularity and with very little cost, making
 such simulations an excellent tool to study complex dynamic systems.
 
@@ -41,7 +41,7 @@ a GUI.
 
 \bb
 
-We decided against against using those existing frameworks, and instead develop
+We decided against using those existing frameworks, and instead develop
 our own solution based on the Unity3d\footnote{Developed by Unity Technologies and available from https://unity.com}
 Game and Simulation Engine.
 
@@ -94,12 +94,12 @@ of the following features, and therefore decided to develop our own solution.
     the sustainability of the project.
     \item \textbf{Agent Model:} The agent behavior should depend on an
     flexible agent logic that is based on empirical psychological studies.
-    \item \textbf{Flexibility:} The simulation should be configure able to scale
+    \item \textbf{Flexibility:} It should be possible to configure the simulation in
     class size, student profiles and classroom environment.
     \item \textbf{Reproducibility:} The simulation outcome (except of user interaction) should
     be reproducible, in order to provide a framework to study particular group dynamics.
     If multiple runs of the same simulation produce different results, it is unclear
-    how alterations of the simulation configuration effect the outcome.
+    how alterations of the simulation configuration affect the outcome.
     \item \textbf{Data Analysis:} The simulation should include methods and tools
     to study the results generated. In particular it should be possible to execute multiple
     instances of the simulation with slightly changed conditions in order to

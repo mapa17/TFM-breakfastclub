@@ -41,7 +41,7 @@ having a distinct focus, answering a different set of questions.
     slightly changing the classroom profiles and random elements of the simulation.
     \item \textbf{Study:} Having a expectation on how a specific classroom profile
     behaves, the \textit{Study} phase asks the question how two different profiles
-    compare to each other, and how alterations of the personality profile effect
+    compare to each other, and how alterations of the personality profile affect
     group averages.
 \end{enumerate}
 
@@ -69,13 +69,13 @@ one tries to answer only one or two of the first steps are necessary.
 a specific classroom of agents behaves.
 
 The simulation program takes three input arguments. The simulation config,
-defining all simulation relevant constants that governing how the simulation mechanisms
+is defining all simulation relevant parameters that govern how the simulation mechanism
 works, the classroom configuration that defines the psychological profile of students,
 and a random seed that is used to initialize the random number generator used during
 the simulation.
 
 Examples files of the simulation config and classroom config can be found as part of
-the appendix (see \ref{ApxSimulationConfig} abd \ref{ApxClassroomProfile}).
+the appendix (see \ref{ApxSimulationConfig} and \ref{ApxClassroomProfile}).
 
 The classroom configuration must contain a set of Personality Types and the number
 of students of each type. When the simulation is run, a classroom is dynamically
@@ -92,12 +92,12 @@ three different agent infos) that is generated for each agent, and contains info
 about the distribution and transitions between different behaviors performed by the agent.
 This figure is used to study how a specific instance of a psychological type behaves
 in the given classroom. One can observe how much of the overall time an Agent
-spends Studying alone or example and how long on average a single study session lasts.
+spends Studying alone or how long on average a single study session lasts.
 
 \bb
 
-It is interesting to observe the different pattern with which the personality traits
-effect the behavior distribution of the individual agents. One could for example
+It is interesting to observe the different patterns with which the personality traits
+affect the behavior distribution of the individual agents. One could for example
 observe that agents high on conscientiousness, on average have longer
 learning sessions than agents that are low on conscientiousness.
 
@@ -116,7 +116,7 @@ learning sessions than agents that are low on conscientiousness.
 \subsection{Classroom Aggregates}
 The second result produced by the simulation analysis is a figure showing classroom
 aggregated features over time (see figure \ref{ClassroomAggregates} as an example).
-This figures contains information like the aggregated noise, the average happiness,
+This figures contains information like the aggregated noise, average happiness,
 motivation and attention of a class, in addition to information about how many of
 the students are studying or quarreling at a specific moment during the simulation.
 
@@ -129,7 +129,7 @@ as a whole, and can be used to search for emerging social phenomena.
     \makebox[\paperwidth][l]{%
     \begin{minipage}[t]{10cm}
         \centering
-        \includegraphics[width=500pt]{ClassroomAggregates}
+        \includegraphics[width=450pt]{ClassroomAggregates}
         \caption{Classroom Aggregates}
     \end{minipage}    
     }%
@@ -164,7 +164,7 @@ a random number generator.
 
 \bb
 
-The result of the experiment phase is a single \textbf{HA-Plot} plot, named after
+The result of the experiment phase is a single \textbf{HA-Plot}, named after
 its axis Attention and Happiness. The plot shows a a single point for each simulation
 instance, with its position being based on the average attention and happiness of
 the corresponding classroom over the complete simulation.
