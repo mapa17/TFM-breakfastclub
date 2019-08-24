@@ -52,6 +52,15 @@ model are the following:
     the internal agent state, its behavior and its properties.
 \end{itemize}
 
+A screen shot of the simulation is shown in figure \ref{SimulationScreenshot}
+
+\begin{figure}[]
+    \centering
+    \includegraphics[width=400pt]{SimulationScreenshot}
+    \caption{A screenshot of the running simulation.}
+    \label{SimulationScreenshot}
+\end{figure}
+
 \subsection{The environment: a classroom}
 In our case the environment is a classroom that contains multiple tables for
 students to study individually and in small groups. In addition the environment
@@ -585,8 +594,8 @@ by agents with high rates on extroversion. In order to chat, the agent will
 randomly select another agent in the classroom to chat with, and approach that agent.
 If the other agent accepts the invitation, and both agents are next to each other,
 the agents will start chatting. If the request was rejected, the agent will repeat
-to send requests for a specific number of times, before giving up and choosing
-another agent to start over.
+to send requests for a specific number of times, before giving up and start the second
+best scored action.
 
 The action scored is calculated using the following scoring function
 
@@ -615,7 +624,8 @@ Quarreling is the result of an agent's happiness being very low and being at lea
 medium to highly motivated. In order to quarrel the agent has to find another agent
 to do so. Similar to Chat the agent will select another agent randomly and starts
 to quarrel with that agent if accepted. If the other agent refuses, the unhappy
-agent will repeat its request a fixed number of times before searching for another agent.
+agent will repeat its request a fixed number of times before giving up and evaluate
+another action.
 
 Once the agents start quarreling, their motivation and happiness will fall drastically.
 In addition quarreling produces a lot of noise that is added to the accumulated

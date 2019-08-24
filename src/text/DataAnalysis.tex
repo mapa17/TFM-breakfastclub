@@ -184,18 +184,6 @@ This dataset is the numeric equivalent to the generated HA-Plot.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Study}
-The last step in the data analysis pipeline is focused on comparing different classroom
-profiles.
-
-In this phase the CSV generated during the Experiment phase is analyzed to
-generate a HA-Plot that contains one ellipse for each classroom profile simulated.
-The center of the ellipse is put to the overall mean of attention and happiness
-of the corresponding set of instances of the same classroom profile, indicating its standard
-deviation by the shape of the ellipse.
-
-This plot gives an visual overview of the effect the different personality profiles
-have compared to each other, and can be used to study the strength and direction of
-change one profile has compared to another.
 
 \begin{figure}[H]
     \makebox[\textwidth][l]{%
@@ -207,3 +195,28 @@ change one profile has compared to another.
     \end{minipage}    
     }%
 \end{figure}
+
+
+The last step in the data analysis pipeline is focused on comparing different classroom
+profiles.
+
+In this phase of the analysis the CSV generated during the Experiment phase is analyzed to
+generate a HA-Plot that contains one ellipse for each classroom profile simulated.
+The ellipse center and size are defined by the mean and standard deviation of all
+individual agents of the corresponding classroom profile.
+
+This plot gives an visual overview how the different classroom profiles
+compare to each other, and can be used to study the strength and direction of
+change one profile has compared to another.
+
+In addition the plot contains a statistical analysis of the relation between
+classroom profiles and the correlation between happiness, attention and the different
+personality dimensions.
+
+The statistical analysis includes a MANOVA analysis indicating if there is a
+significance difference between groups along the dimensions Happiness and Attention,
+in addition to a pair wise ANOVA analysis to indicate if each classroom profile
+paar is significantly different to each other.
+
+An example of the plot can been seen as part of the results presented in the next
+chapter (see figure \ref{StudyResults}).
