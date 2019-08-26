@@ -1,4 +1,9 @@
-\chapter{Objectives}
+\chapter{Objectives and Methodology}
+The main objective of Thesis is the development of a simulation using an
+agent-based model that is capable of simulation students in an virtual classroom.
+
+\bb
+
 As it is typical for projects beyond certain size, the objectives and scope had to
 be adapted according to the progression of the project after the initial planning phase.
 This chapter describes the initial envisioned objectives as well as the objectives
@@ -15,7 +20,7 @@ Because of time constrains the interaction and ML-Agent features have not been i
 in the final version developed during the Thesis, but are included in the last chapter
 on the outlook of the project.
 
-\bb
+\section{Particular Objectives}
 
 The objectives for the final version based on the resources and time available
 have been the following:
@@ -39,3 +44,44 @@ have been the following:
     profiles are compared to each other.
 \end{itemize}
 
+\section{Methodology}
+The development of the simulation was following an \textit{agile software development}
+principle in which based on two prototypes, and many small iterations the final
+software was developed.
+
+\bb
+
+In order to keep track of the project progress and open tasks, the issue and project
+management system that is part of Github was used. There we defined two main milestones
+for the final simulation, describing goals and associated tasks.
+During the development progress, any arising change was documented and the associated
+code changes have been managed as Github issues.
+
+\bb
+
+Concerning the agent mechanics and simulation parameters, a iterative process was
+pursued. The behavior of agents was observed manually using the interactive simulation
+for any abnormal or undesired behavior. Once an issue was identified, the agent logic
+was adapted to resolve the issue, and its correctness verified observing a the
+simulation process.
+
+\bb
+
+Simulation Parameters have been chosen using the data analysis scripts developed
+as part of the thesis (see chapter \ref{Chapter:DataAnalysis}). The behavior
+of individual agents, as well as classroom aggregates have been used to find
+the simulation parameters used to perform the study (Simulation parameters are included
+in the Appendix). The parameters have been tuned using three classroom profiles,
+following different objectives.
+
+\begin{itemize}
+    \item \textbf{Normal classroom:} A classroom with 30 students having a 'normal'
+    personality profile, have been used to define thresholds like noise, and happiness
+    and motivation increases.
+    \item \textbf{Test classroom:} A special test class containing different type of
+    personality profiles has been used to verify that simulated agent behavior is
+    corresponding to results gathered in empirical studies.
+    \item \textbf{Random classroom:} A special classroom with students having random
+    personality profiles was used to maximize the difference in happiness and attention
+    between different agents.
+\end{itemize}
