@@ -53,21 +53,20 @@ one tries to answer only one or two of the first steps are necessary.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Simulation}
+\textit{Simulation} is the first step of the analysis, answering the question how
+a specific classroom of agents behaves.
 
 \begin{figure}[H]
-    \caption{Simulation Overview}
-    \label{SimulationOverview}
-    \hspace*{-4.0\leftmargin}
+   \hspace*{-4.0\leftmargin}
     \makebox[\textwidth][c]{%
     \begin{minipage}[t]{12cm}
         \centering
         \includegraphics[width=550pt]{Simulation-Overview}
     \end{minipage}    
     }%
+    \caption{Simulation Overview}
+    \label{SimulationOverview}
 \end{figure}
-
-\textit{Simulation} is the first step of the analysis, answering the question how
-a specific classroom of agents behaves.
 
 The simulation program takes three input arguments. The simulation config,
 is defining all simulation relevant parameters that govern how the simulation mechanism
@@ -88,31 +87,24 @@ about each individual agent, the classroom as a group and a new CSV file that co
 aggregated information.
 
 \subsection{Agent Info}
-One of the results of the simulation step is the \textbf{Agent Info} figure (see \ref{AgentInfo} showing
-three different agent infos) that is generated for each agent, and contains information
+One of the results of the simulation step is the \textbf{Agent Info} figure
+(see \ref{AgentInfo}) that is generated for each agent, and contains information
 about the distribution and transitions between different behaviors performed by the agent.
 This figure is used to study how a specific instance of a psychological type behaves
 in the given classroom. One can observe how much of the overall time an Agent
 spends Studying alone or how long on average a single study session lasts.
 
-\bb
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{AgentInfo1}
+    \caption{Agent Info}
+    \label{AgentInfo}
+\end{figure}
 
 It is interesting to observe the different patterns with which the personality traits
 affect the behavior distribution of the individual agents. One could for example
-observe that agents high on conscientiousness, on average have longer
-learning sessions than agents that are low on conscientiousness.
-
-\begin{figure}[H]
-    \label{AgentInfo}
-    \caption{Agent Info}
-    \hspace*{-2.0\leftmargin}
-    \makebox[\paperwidth][c]{%
-        \begin{minipage}[t]{400pt}
-            \centering
-            \includegraphics[width=330pt]{AgentInfo1}         
-        \end{minipage}
-    }%
-\end{figure}
+observe that agents higher on conscientiousness, on average have longer
+learning sessions.
 
 \subsection{Classroom Aggregates}
 The second result produced by the simulation analysis is a figure showing classroom
@@ -125,8 +117,6 @@ This kind of figure is useful to study how personality profiles effect the group
 as a whole, and can be used to search for emerging social phenomena.
 
 \begin{figure}[]
-    \label{ClassroomAggregates}
-    \caption{Classroom Aggregates}
     \hspace*{-1.0\leftmargin}
     \makebox[\paperwidth][l]{%
     \begin{minipage}[t]{10cm}
@@ -134,6 +124,8 @@ as a whole, and can be used to search for emerging social phenomena.
         \includegraphics[width=450pt]{ClassroomAggregates}
     \end{minipage}    
     }%
+    \caption{Classroom Aggregates}
+    \label{ClassroomAggregates}
 \end{figure}
 
 
@@ -148,10 +140,10 @@ on evaluating the variance between simulations of the same classroom configurati
     \begin{minipage}[t]{10cm}
         \centering
         \includegraphics[width=400pt]{Experiment-Overview}
-        \caption{Experiment Overview}
-        \label{ExperimentOverview}
     \end{minipage}    
     }%
+    \caption{Experiment Overview}
+    \label{ExperimentOverview}
 \end{figure}
 
 In order to have a statistical description of the simulation results, one has to
@@ -166,7 +158,7 @@ a random number generator.
 \bb
 
 The result of the experiment phase is a single \textbf{HA-Plot}, named after
-its axis Attention and Happiness. The plot shows a a single point for each simulation
+its axis Attention and Happiness. The plot shows a single point for each simulation
 instance, with its position being based on the average attention and happiness of
 the corresponding classroom over the complete simulation.
 
@@ -191,10 +183,10 @@ This dataset is the numeric equivalent to the generated HA-Plot.
     \begin{minipage}[t]{10cm}
         \centering
         \includegraphics[width=400pt]{Study-Overview}
-        \caption{Study Overview}
-        \label{StudyOverview}
     \end{minipage}    
     }%
+    \caption{Study Overview}
+    \label{StudyOverview}
 \end{figure}
 
 
@@ -206,7 +198,7 @@ generate a HA-Plot that contains one ellipse for each classroom profile simulate
 The ellipse center and size are defined by the mean and standard deviation of all
 individual agents of the corresponding classroom profile.
 
-This plot gives an visual overview how the different classroom profiles
+This plot gives a visual overview of how the different classroom profiles
 compare to each other, and can be used to study the strength and direction of
 change one profile has compared to another.
 
@@ -217,7 +209,7 @@ personality dimensions.
 The statistical analysis includes a MANOVA analysis indicating if there is a
 significance difference between groups along the dimensions Happiness and Attention,
 in addition to a pair wise ANOVA analysis to indicate if each classroom profile
-paar is significantly different to each other.
+pair is significantly different to each other.
 
 An example of the plot can been seen as part of the results presented in the next
 chapter (see figure \ref{StudyResults}).

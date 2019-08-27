@@ -28,7 +28,7 @@ updated in a defined sequence with a constant rate of 1 Hz. The agent logic is t
 running in discrete steps, although the underlying Unity3d engine is executed
 continuously (as much as this is possible on a discrete computer system).
 
-During development it was taken care to as much as possible separated, simulation logic
+During development it was taken care to as much as possible separate, simulation logic
 from Unity specific elements like visualization, or digital content management,
 in order to reduce dependence and reusability of the system. The simulation logic
 is implemented as C\# scripts that interface the Unity3d Framework.
@@ -172,20 +172,23 @@ capabilities.
 The following are the different factors that influence agent behavior:
 
 \begin{itemize}
-    \item \textbf{Environment:} The availability of tables, and the accumulated noise in the classroom. 
-    \item \textbf{Direct agent interaction:} Another agent that accepts ot rejects to chat or quarrel with the agent.
-    \item \textbf{Internal states:} Based on internal states agent logic governs which action is more or less desired by the agent.
-    \item \textbf{Peer Pressure:} The action an agent selects to perform is influenced by the average action preference of the group.
+    \item \textbf{Environment:} The availability of tables, and the accumulated
+    noise in the classroom.
+    \item \textbf{Direct agent interaction:} Another agent that accepts ot rejects
+    to chat or quarrel with the agent.
+    \item \textbf{Internal states:} Based on internal states agent logic governs
+    which action is more or less desired by the agent.
+    \item \textbf{Peer Pressure:} The action an agent selects to perform is
+    influenced by the average action preference of the group.
 \end{itemize}
 
 How peer pressure is modeled is discussed in more detail in \ref{action-scores}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagebreak
 
-\label{BigFive}
 \section{Agent Personality Model}
+\label{BigFive}
 As described earlier agents differ between each other only in their Personality, 
 witch is modeled on a set of \textbf{Personality Traits}.
 
@@ -237,7 +240,7 @@ to be taken as constant for our purposes.
 
 \begin{table}[]
     \makebox[\textwidth][l]{%
-    \begin{minipage}[t]{10cm}
+    \begin{minipage}[t]{11cm}
 \begin{tabularx}{1.6\textwidth}{|>{\hsize=.2\hsize}X|X|}
     \hline
     \multicolumn{1}{|c|}{\textbf{Personality Trait}} & \multicolumn{1}{c|}{\textbf{Description}} \\
@@ -256,7 +259,7 @@ to be taken as constant for our purposes.
     determined.
     On the positive side, high C is associated with academic and occupational
     achievement; on the negative side, it may lead to annoying
-    fastidiousness, compulsive neatness, or workaholic behavior, Low C’s are not
+    fastidiousness, compulsive neatness, or workaholic behavior, low C’s are not
     necessarily lacking in moral principles, but they are less exacting
     in applying them.} \\
     \hline
@@ -279,11 +282,11 @@ to be taken as constant for our purposes.
     However, N includes more than susceptibility to psychological distress. Perhaps
     because disruptive emotions interfere with adaptation, those
     who score high in N are also prone to have irrational ideas, to be less able
-    to control their impulses, and to cope more poorly then others with stress.} \\
+    to control their impulses, and to cope more poorly than others with stress.} \\
     \hline
   \end{tabularx}
   \label{OCEAN-Model-table}
-  \caption{Table: Ocean model factors taken from \cite{Ehrler1999}}
+  \caption{Table: Ocean model factors taken from Ehrler1999}
 
 \end{minipage}    
 }%
@@ -339,7 +342,6 @@ revealed low predictive power and accuracy of the model.
 The OCEAN model has therefore been preferred over any alternative.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagebreak
 
 \section{Agent Logic}
 As mentioned before the simulation is using a heterogeneous agent model with agents
@@ -400,7 +402,7 @@ to the action with the highest score.
 \bb
 
 As mentioned shorty in the chapter on agent logic, the action selection does not only
-depended on the agents own desires, but is modulated by \textbf{peer pressure}.
+depend on the agents own desires, but is modulated by \textbf{peer pressure}.
 This aspect was included in the model by building the action score vector that is
 used to select an action, as a weighted sum of the action score vector of the agent
 plus the mean action score vector of the classroom (i.e. all agents in the classroom).
@@ -458,15 +460,15 @@ Agent B decides its response depending on a random factor and its personality tr
 In case of chat the relevant personality trait is \textit{conscientiousness} and
 in case of quarrel \textit{agreeableness}. The random factor is a number between 0.0
 and 1.0 that is randomly generated and compared to the personality trait.
-Is that number equal or bigger than the corresponding personality trait, the agent
+If bigger or equal than the corresponding personality trait, the agent
 will accept the interaction.
 
 \bb
 
-This mechanism reflect empirical findings that agents with a high level of
+This mechanism reflects empirical findings that agents with a high level of
 conscientiousness are less likely to be distracted from their current task,
-and a high level of agreeableness, reducing the chance to quarrel, as it is associated
-with less involvement in conflicts.
+and that higher levels of agreeableness, reduce the chance to quarrel, and
+involvement in conflicts.
 
 \subsection{Updating internal states}
 At the end of each cycle, the agent is updating its internal states, whereby
@@ -513,9 +515,8 @@ how to calculate the action scores.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
-\label{action-scores}
 \section{Actions Scores}
+\label{action-scores}
 As mentioned before each action is scored independently, taking into account the
 internal states and the personality traits of the agent. The score calculated reflects
 how appropriate the specific action is for the personality and the internal state
@@ -545,7 +546,7 @@ is cutoff to stay within 0.0 and 1.0.
 \bb
 
 As mentioned before, the internal states happiness and motivation are effected by
-the action the agent is performing. How the internal states are affected, depend
+the action the agent is performing. How the internal states are affected, depends
 on the state of the action, and differs between \textit{Waiting, Transition} and \textit{Execution}.
 Where for \textit{Waiting} and \textit{Transition} the effect strength on happiness is modulated
 by the agents neuroticism and agreeableness, and during \textit{Executing}
@@ -630,7 +631,7 @@ another action.
 Once the agents start quarreling, their motivation and happiness will fall drastically.
 In addition quarreling produces a lot of noise that is added to the accumulated
 noise in the classroom.
-When the agents stop to quarrel as special mechanism is invoked, immediately
+When the agents stop to quarrel a special mechanism is invoked, immediately
 increasing the happiness of the agent by a fixed value (simulation parameters).
 
 The action score is calculated using the following scoring function
